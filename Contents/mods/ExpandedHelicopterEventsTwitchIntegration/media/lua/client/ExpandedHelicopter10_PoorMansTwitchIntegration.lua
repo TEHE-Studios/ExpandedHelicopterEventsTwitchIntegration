@@ -58,3 +58,5 @@ Events.OnCustomUIKey.Add(function(key)
 	elseif key == Keyboard.KEY_NUMPAD9 then DEBUG_TESTS.launchHeliTest(twitchIntegrationPresets[eHelicopterSandbox.config.Numpad9])
 	end
 end)
+
+Events.OnGameBoot.Add(sandboxOptionsEnd(true))
