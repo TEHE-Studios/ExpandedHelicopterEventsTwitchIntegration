@@ -1,8 +1,8 @@
-twitchIntegrationPresets = {}
+twitchIntegrationPresets = {"NONE"}
 for presetID,_ in pairs(eHelicopter_PRESETS) do
 	table.insert(twitchIntegrationPresets, presetID)
 end
-table.insert(twitchIntegrationPresets, "Random")
+table.insert(twitchIntegrationPresets, "RANDOM")
 
 
 function generateOptions()
@@ -19,10 +19,13 @@ function applyTwitchIntegration(bAdd)
 
 	if bAdd then
 		eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true, iteration=2}
-		eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration\n", }
+		eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration", }
+		eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
+			text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
 	else
 		eHelicopterSandbox.menu.twitchSpace = nil
 		eHelicopterSandbox.menu.twitchIntegrationText = nil
+		eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
 	end
 
 	for i=1, 9 do
@@ -51,18 +54,23 @@ twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 			  ["KP_4"]="Numpad4",["KP_5"]="Numpad5",["KP_6"]="Numpad6",
 			  ["KP_7"]="Numpad7",["KP_8"]="Numpad8",["KP_9"]="Numpad9",}
 
+
 Events.OnCustomUIKey.Add(function(key)
 	if getPlayer() then
 		local twitchKey = twitchKeys[Keyboard.getKeyName(key)]
 		if twitchKey then
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local integration = twitchIntegrationPresets[numpadKey]
-			if integration=="Random" then
-				integration = twitchIntegrationPresets[ZombRand(1,#twitchIntegrationPresets)]
+			if integration=="RANDOM" then
+				integration = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)]
+			end
+			if integration=="NONE" then
+				return
 			end
 			DEBUG_TESTS.launchHeliTest(integration)
 		end
 	end
 end)
+
 
 Events.OnGameBoot.Add(sandboxOptionsEnd(true))
