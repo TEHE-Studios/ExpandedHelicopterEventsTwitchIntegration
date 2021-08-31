@@ -1,8 +1,12 @@
-twitchIntegrationPresets = {"NONE"}
-for presetID,_ in pairs(eHelicopter_PRESETS) do
-	table.insert(twitchIntegrationPresets, presetID)
+twitchIntegrationPresets = {}
+function generateTwitchIntegrationPresets()
+	local tempTIP = {"NONE"}
+	for presetID,_ in pairs(eHelicopter_PRESETS) do
+		table.insert(tempTIP, presetID)
+	end
+	table.insert(tempTIP, "RANDOM")
+	twitchIntegrationPresets = tempTIP
 end
-table.insert(twitchIntegrationPresets, "RANDOM")
 
 
 function generateOptions()
@@ -15,38 +19,25 @@ end
 
 
 appliedTwitchIntegration = false
-function applyTwitchIntegration(bAdd)
+function applyTwitchIntegration()
+	generateTwitchIntegrationPresets()
+	eHelicopterSandbox.menu.twitchSpace = nil
+	eHelicopterSandbox.menu.twitchIntegrationText = nil
+	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
 
-	if bAdd then
-		eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true, iteration=2}
-		eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration", }
-		eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
-			text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
-	else
-		eHelicopterSandbox.menu.twitchSpace = nil
-		eHelicopterSandbox.menu.twitchIntegrationText = nil
-		eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
-	end
+	eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true, iteration=2}
+	eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration", }
+	eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
+		text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
 
 	for i=1, 9 do
 		if appliedTwitchIntegration == false then
 			eHelicopterSandbox.config["Numpad"..i] = 1
 		end
-		if bAdd then
-			eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = generateOptions() }
-		else
-			eHelicopterSandbox.menu["Numpad"..i] = nil
-		end
+		eHelicopterSandbox.menu["Numpad"..i] = nil
+		eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = generateOptions() }
 	end
-
 	appliedTwitchIntegration = true
-end
-
-
-sandboxOptionsEnd_override = sandboxOptionsEnd
-function sandboxOptionsEnd(bAdd)
-	sandboxOptionsEnd_override(bAdd)
-	applyTwitchIntegration(bAdd)
 end
 
 
@@ -73,4 +64,9 @@ Events.OnCustomUIKey.Add(function(key)
 end)
 
 
-Events.OnGameBoot.Add(sandboxOptionsEnd(true))
+local sandboxOptionsEnd_override = sandboxOptionsEnd
+function sandboxOptionsEnd()
+	sandboxOptionsEnd_override()
+	applyTwitchIntegration()
+end
+Events.OnGameBoot.Add(sandboxOptionsEnd())
