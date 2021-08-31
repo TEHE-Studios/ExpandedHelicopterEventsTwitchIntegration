@@ -64,9 +64,9 @@ Events.OnCustomUIKey.Add(function(key)
 end)
 
 
-local sandboxOptionsEnd_override = sandboxOptionsEnd
+EHETI_sandboxOptionsEnd_override = sandboxOptionsEnd
 function sandboxOptionsEnd()
-	sandboxOptionsEnd_override()
+	EHETI_sandboxOptionsEnd_override()
 	applyTwitchIntegration()
 end
 Events.OnGameBoot.Add(sandboxOptionsEnd())
