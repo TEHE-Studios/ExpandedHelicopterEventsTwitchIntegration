@@ -2,7 +2,13 @@ version=1
 id=2589034501
 title=Expanded Helicopter Events: Twitch Integration
 description= [h2]THIS MOD REQUIRES [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2458631365]EXPANDED HELICOPTER EVENTS[/url][/h2]
-description= This mod utilizes the numpad keys 1-9 to activate helicopter events - intended for streamers.
+description=
+description=The mod is intended for streamers who would like their viewers to spawn events.
+description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
+description=Afterwhich you can tie numpad presses to your chosen streaming program.
+description=
+description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Torch-portal[/b][/url][/h3]
+description=Let us know if other programs allow for Twitch Event integration!
 description=
 description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=

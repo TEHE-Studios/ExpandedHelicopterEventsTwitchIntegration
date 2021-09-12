@@ -47,18 +47,27 @@ twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 
 
 Events.OnCustomUIKey.Add(function(key)
-	if getPlayer() then
+	local playerChar = getPlayer()
+
+	if playerChar then
 		local twitchKey = twitchKeys[Keyboard.getKeyName(key)]
+
 		if twitchKey then
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local integration = twitchIntegrationPresets[numpadKey]
+			
 			if integration=="RANDOM" then
 				integration = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)]
 			end
+
 			if integration=="NONE" then
 				return
 			end
-			DEBUG_TESTS.launchHeliTest(integration)
+
+			local heli = getFreeHelicopter(integration)
+			print("EHE-TI: launch: "..tostring(integration))
+			heli:launch(playerChar)
+
 		end
 	end
 end)
