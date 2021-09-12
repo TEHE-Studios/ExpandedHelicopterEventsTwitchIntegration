@@ -65,7 +65,7 @@ Events.OnCustomUIKey.Add(function(key)
 			end
 
 			local heli = getFreeHelicopter(integration)
-			print("EHE-TI: launch: "..tostring(integration))
+			print("EHE-TI: launch: "..tostring(integration).." target:"..playerChar:getDisplayName())
 			heli:launch(playerChar)
 
 		end
