@@ -46,7 +46,7 @@ twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 			  ["KP_7"]="Numpad7",["KP_8"]="Numpad8",["KP_9"]="Numpad9",}
 
 
-Events.OnCustomUIKey.Add(function(key)
+Events.OnKeyPressed.Add(function(key)
 	local playerChar = getPlayer()
 
 	if playerChar then
