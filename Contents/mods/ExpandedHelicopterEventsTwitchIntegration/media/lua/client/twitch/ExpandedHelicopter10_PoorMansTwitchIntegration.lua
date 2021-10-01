@@ -24,15 +24,17 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchSpace = nil
 	eHelicopterSandbox.menu.twitchIntegrationText = nil
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
+	eHelicopterSandbox.menu.twitchIntegrationOnly = nil
 
 	eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true, iteration=2}
 	eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration", }
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
 		text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
-
+	eHelicopterSandbox.menu.twitchIntegrationOnly = {type = "Tickbox", alwaysAccessible = true, title = "Disable events outside of twitch integration.", tooltip = "", }
 	for i=1, 9 do
 		if appliedTwitchIntegration == false then
 			eHelicopterSandbox.config["Numpad"..i] = 1
+			eHelicopterSandbox.config.twitchIntegrationOnly = false
 		end
 		eHelicopterSandbox.menu["Numpad"..i] = nil
 		eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = generateOptions() }
@@ -79,3 +81,14 @@ function sandboxOptionsEnd()
 	applyTwitchIntegration()
 end
 Events.OnGameBoot.Add(sandboxOptionsEnd())
+
+
+EHETI_eHeliEvent_engage = eHeliEvent_engage
+function eHeliEvent_engage(ID)
+	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
+		EHETI_eHeliEvent_engage(ID)
+	else
+		print("EHE-TI: event loop bypassed.")
+	end
+end
+
