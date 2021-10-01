@@ -88,6 +88,11 @@ function eHeliEvent_engage(ID)
 	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
 		EHETI_eHeliEvent_engage(ID)
 	else
+		local eHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
+		eHeliEvent.triggered = true
+		if eHeliEvent.renew then
+			setNextHeliFrom(ID)
+		end
 		print("EHE-TI: event loop bypassed.")
 	end
 end
