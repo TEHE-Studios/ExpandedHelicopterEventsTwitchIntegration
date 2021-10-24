@@ -1,8 +1,10 @@
 twitchIntegrationPresets = {}
 function generateTwitchIntegrationPresets()
 	local tempTIP = {"NONE"}
-	for presetID,_ in pairs(eHelicopter_PRESETS) do
-		table.insert(tempTIP, presetID)
+	for presetID,presetVariables in pairs(eHelicopter_PRESETS) do
+		if presetVariables.doNotListForTwitchIntegration~=true then
+			table.insert(tempTIP, presetID)
+		end
 	end
 	table.insert(tempTIP, "RANDOM")
 	twitchIntegrationPresets = tempTIP
