@@ -72,6 +72,18 @@ Events.OnKeyPressed.Add(function(key)
 			print("EHE-TI: launch: "..tostring(integration).." target:"..playerChar:getDisplayName())
 			heli:launch(playerChar, false)
 
+			local offsetX = ZombRand(750, 1000)
+			if ZombRand(101) <= 50 then
+				offsetX = 0-offsetX
+			end
+
+			local offsetY = ZombRand(750, 1000)
+			if ZombRand(101) <= 50 then
+				offsetY = 0-offsetY
+			end
+
+			heli.currentPosition:set(playerChar:getX()+offsetX, playerChar:getY()+offsetY, heli.height)
+
 		end
 	end
 end)
