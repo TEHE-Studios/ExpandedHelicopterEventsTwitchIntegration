@@ -70,7 +70,7 @@ Events.OnKeyPressed.Add(function(key)
 
 			local heli = getFreeHelicopter(integration)
 			print("EHE-TI: launch: "..tostring(integration).." target:"..playerChar:getDisplayName())
-			heli:launch(playerChar, false)
+			heli:launch(playerChar, true)
 
 			local offsetX = ZombRand(500, 750)
 			if ZombRand(101) <= 50 then
