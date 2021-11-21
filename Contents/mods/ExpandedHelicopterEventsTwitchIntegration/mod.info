@@ -3,3 +3,4 @@ id=EHETwitchIntegration
 description= This mod utilizes the numpad keys 1-9 to activate helicopter events - intended for streamers.
 poster=poster.png
 require=ExpandedHelicopterEvents
+versionMin=41.51
