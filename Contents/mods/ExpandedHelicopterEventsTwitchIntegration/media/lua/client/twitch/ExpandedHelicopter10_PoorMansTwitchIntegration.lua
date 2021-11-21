@@ -1,3 +1,5 @@
+Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.1"))
+
 twitchIntegrationPresets = {}
 function generateTwitchIntegrationPresets()
 	local tempTIP = {"NONE"}
@@ -89,7 +91,15 @@ Events.OnKeyPressed.Add(function(key)
 end)
 
 
-EHETI_sandboxOptionsEnd_override = sandboxOptionsEnd
+local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
+function eHeliEvent_ScheduleNew(param1,param2)
+	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
+		EHETI_eHeliEvent_ScheduleNew(param1,param2)
+	end
+end
+
+
+local EHETI_sandboxOptionsEnd_override = sandboxOptionsEnd
 function sandboxOptionsEnd()
 	EHETI_sandboxOptionsEnd_override()
 	applyTwitchIntegration()
@@ -97,16 +107,13 @@ end
 Events.OnGameBoot.Add(sandboxOptionsEnd())
 
 
-EHETI_eHeliEvent_engage = eHeliEvent_engage
+local EHETI_eHeliEvent_engage = eHeliEvent_engage
 function eHeliEvent_engage(ID)
 	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
 		EHETI_eHeliEvent_engage(ID)
 	else
 		local eHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
-		eHeliEvent.triggered = true
-		if eHeliEvent.renew then
-			setNextHeliFrom(ID)
-		end
+		eHeliEvent = nil
 		print("EHE-TI: event loop bypassed.")
 	end
 end
