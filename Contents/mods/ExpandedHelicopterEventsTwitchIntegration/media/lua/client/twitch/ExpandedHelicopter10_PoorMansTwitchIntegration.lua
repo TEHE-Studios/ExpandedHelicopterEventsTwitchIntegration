@@ -92,9 +92,9 @@ end)
 
 
 local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
-function eHeliEvent_ScheduleNew(param1,param2)
+function eHeliEvent_ScheduleNew(param1,param2,param3)
 	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
-		EHETI_eHeliEvent_ScheduleNew(param1,param2)
+		EHETI_eHeliEvent_ScheduleNew(param1,param2,param3)
 	end
 end
 
