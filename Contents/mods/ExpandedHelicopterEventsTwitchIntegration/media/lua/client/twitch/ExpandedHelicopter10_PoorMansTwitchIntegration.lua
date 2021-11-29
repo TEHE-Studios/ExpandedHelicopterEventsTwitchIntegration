@@ -52,16 +52,16 @@ twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 			  ["KP_7"]="Numpad7",["KP_8"]="Numpad8",["KP_9"]="Numpad9",}
 
 
-Events.OnKeyPressed.Add(function(key)
-	local playerChar = getPlayer()
+function twitchIntegration_OnKeyPressed(key)
+	local twitchKey = twitchKeys[Keyboard.getKeyName(key)]
+	if twitchKey then
 
-	if playerChar then
-		local twitchKey = twitchKeys[Keyboard.getKeyName(key)]
-
-		if twitchKey then
+		local numPlayers = getNumActivePlayers()
+		local playerChar = getSpecificPlayer(ZombRand(numPlayers))
+		if playerChar then
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local integration = twitchIntegrationPresets[numpadKey]
-			
+
 			if integration=="RANDOM" then
 				integration = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)]
 			end
@@ -85,10 +85,11 @@ Events.OnKeyPressed.Add(function(key)
 			end
 
 			heli.currentPosition:set(playerChar:getX()+offsetX, playerChar:getY()+offsetY, heli.height)
-
 		end
 	end
-end)
+end
+
+Events.OnKeyPressed.Add(twitchIntegration_OnKeyPressed)
 
 
 local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
