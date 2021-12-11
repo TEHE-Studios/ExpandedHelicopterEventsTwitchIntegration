@@ -1,5 +1,7 @@
 Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.1"))
 
+require "ExpandedHelicopter09_SandboxOptions"
+
 twitchIntegrationPresets = {}
 function generateTwitchIntegrationPresets()
 	local tempTIP = {"NONE"}
