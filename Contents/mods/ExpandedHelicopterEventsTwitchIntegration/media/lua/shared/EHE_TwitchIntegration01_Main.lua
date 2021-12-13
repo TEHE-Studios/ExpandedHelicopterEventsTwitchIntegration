@@ -24,6 +24,8 @@ end
 
 appliedTwitchIntegration = false
 function applyTwitchIntegration()
+	eHelicopterSandbox = eHelicopterSandbox or {}
+	eHelicopterSandbox.menu = eHelicopterSandbox.menu or {}
 
 	eHelicopterSandbox.menu.twitchSpace = nil
 	eHelicopterSandbox.menu.twitchIntegrationText = nil
