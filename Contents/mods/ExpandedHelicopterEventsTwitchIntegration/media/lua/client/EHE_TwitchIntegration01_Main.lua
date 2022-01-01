@@ -1,6 +1,6 @@
 Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.1"))
-
 require "ExpandedHelicopter02a_Presets"
+require "ExpandedHelicopter09_EasyConfigOptions"
 
 twitchIntegrationPresets = {}
 function generateTwitchIntegrationPresets()
