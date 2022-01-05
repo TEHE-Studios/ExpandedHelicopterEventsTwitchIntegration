@@ -7,12 +7,12 @@ description=The mod is intended for streamers who would like their viewers to sp
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
 description=Afterwhich you can tie numpad presses to your chosen streaming program.
 description=
+description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+description=
 description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Torch-portal[/b][/url][/h3]
 description=Let us know if other programs allow for Twitch Event integration!
 description=
-description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+description=
 description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198118348349680656/][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_sm.png[/img][/url]
-description=
-description=
 tags=Build 41;Framework;Misc
 visibility=public
