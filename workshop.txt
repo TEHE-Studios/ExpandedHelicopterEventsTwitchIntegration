@@ -1,7 +1,7 @@
 version=1
 id=2589034501
 title=Expanded Helicopter Events: Twitch Integration
-description= [h2]THIS MOD REQUIRES [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2458631365]EXPANDED HELICOPTER EVENTS[/url][/h2]
+description=[h2]THIS MOD REQUIRES [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2458631365]EXPANDED HELICOPTER EVENTS[/url][/h2]
 description=
 description=The mod is intended for streamers who would like their viewers to spawn events.
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
@@ -10,14 +10,8 @@ description=
 description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Torch-portal[/b][/url][/h3]
 description=Let us know if other programs allow for Twitch Event integration!
 description=
-description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
-description=
-description= [h2]Credits:[/h2]
-description= [h3]Consider supporting your favorite modders![/h3]
-description= Shark - Models, Art
-description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
-description= Raven & Gabby - Sound, Voiceover
-description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
+description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827906428][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827912378][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url]
 description=
 description=
 tags=Build 41;Framework;Misc
