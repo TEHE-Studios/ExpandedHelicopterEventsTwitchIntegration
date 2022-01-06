@@ -36,11 +36,6 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationOnly = nil
 	eHelicopterSandbox.menu.twitchSpaceEnd = nil
 
-	--TODO: Fix MP
-	if (getCore():getGameMode() == "Multiplayer") and isIngameState() then
-		return
-	end
-
 	generateTwitchIntegrationPresets()
 
 	eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true}

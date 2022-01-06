@@ -1,10 +1,12 @@
+require "ExpandedHelicopter00a_Util"
+
 twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 			  ["KP_4"]="Numpad4",["KP_5"]="Numpad5",["KP_6"]="Numpad6",
 			  ["KP_7"]="Numpad7",["KP_8"]="Numpad8",["KP_9"]="Numpad9",}
 
 function twitchIntegration_OnKeyPressed(key)
 
-	if (getCore():getGameMode() == "Multiplayer") then
+	if isClient() then
 		if (not isAdmin()) and (not isCoopHost()) then
 			return
 		end
@@ -13,8 +15,8 @@ function twitchIntegration_OnKeyPressed(key)
 	local twitchKey = twitchKeys[Keyboard.getKeyName(key)]
 	if twitchKey then
 
-		local numPlayers = getNumActivePlayers()
-		local playerChar = getSpecificPlayer(ZombRand(numPlayers))
+		local players = getActualPlayers()
+		local playerChar = players[ZombRand(#players)+1]
 		if playerChar then
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local integration = twitchIntegrationPresets[numpadKey]
