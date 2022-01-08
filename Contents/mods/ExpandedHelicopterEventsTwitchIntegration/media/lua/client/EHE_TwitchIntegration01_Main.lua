@@ -3,20 +3,18 @@ Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.3"))
 require "ExpandedHelicopter02a_Presets"
 require "ExpandedHelicopter09_EasyConfigOptions"
 
-twitchIntegrationPresets = {}
+
+twitchIntegrationPresets = {"NONE"}
 function generateTwitchIntegrationPresets()
-	local tempTIP = {"NONE"}
 	for presetID,presetVariables in pairs(eHelicopter_PRESETS) do
 		if presetVariables.doNotListForTwitchIntegration~=true then
-			table.insert(tempTIP, presetID)
+			table.insert(twitchIntegrationPresets, presetID)
 		end
 	end
-	table.insert(tempTIP, "RANDOM")
-	twitchIntegrationPresets = tempTIP
+	table.insert(twitchIntegrationPresets, "RANDOM")
 end
 
-
-function generateOptions()
+function EHETI_generateOptions()
 	local newOptions = {}
 	for key,presetID in pairs(twitchIntegrationPresets) do
 		table.insert(newOptions, {presetID, key})
@@ -27,9 +25,6 @@ end
 
 appliedTwitchIntegration = false
 function applyTwitchIntegration()
-	eHelicopterSandbox = eHelicopterSandbox or {}
-	eHelicopterSandbox.menu = eHelicopterSandbox.menu or {}
-
 	eHelicopterSandbox.menu.twitchSpace = nil
 	eHelicopterSandbox.menu.twitchIntegrationText = nil
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
@@ -47,7 +42,7 @@ function applyTwitchIntegration()
 	for i=1, 9 do
 		eHelicopterSandbox.menu["Numpad"..i] = nil
 
-		local fetchedOptions = generateOptions()
+		local fetchedOptions = EHETI_generateOptions()
 		if #fetchedOptions > 0 then
 			eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = fetchedOptions }
 			if appliedTwitchIntegration == false then
