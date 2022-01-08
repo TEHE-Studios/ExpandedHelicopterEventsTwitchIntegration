@@ -46,7 +46,7 @@ function applyTwitchIntegration()
 		if #fetchedOptions > 0 then
 			eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = fetchedOptions }
 			if appliedTwitchIntegration == false then
-				eHelicopterSandbox.config["Numpad"..i] = 1
+				eHelicopterSandbox.config["Numpad"..i] = eHelicopterSandbox.config["Numpad"..i] or 1
 			end
 		end
 	end
