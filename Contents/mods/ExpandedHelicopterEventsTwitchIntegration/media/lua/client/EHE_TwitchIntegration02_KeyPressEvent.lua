@@ -17,6 +17,11 @@ function twitchIntegration_OnKeyPressed(key)
 
 		local players = getActualPlayers()
 		local playerChar = players[ZombRand(#players)+1]
+
+		if eHelicopterSandbox.config.twitchStreamerTargeted == true then
+			playerChar = getPlayer()
+		end
+		
 		if playerChar then
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local integration = twitchIntegrationPresets[numpadKey]

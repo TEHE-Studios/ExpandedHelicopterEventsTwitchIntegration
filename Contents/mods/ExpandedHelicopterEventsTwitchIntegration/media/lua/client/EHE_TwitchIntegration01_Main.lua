@@ -30,6 +30,7 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
 	eHelicopterSandbox.menu.twitchIntegrationOnly = nil
 	eHelicopterSandbox.menu.twitchSpaceEnd = nil
+	eHelicopterSandbox.menu.twitchStreamerTargeted = nil
 
 	generateTwitchIntegrationPresets()
 
@@ -38,6 +39,7 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
 		text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
 	eHelicopterSandbox.menu.twitchIntegrationOnly = {type = "Tickbox", alwaysAccessible = true, title = "Disable events outside of twitch integration.", tooltip = "", }
+	eHelicopterSandbox.menu.twitchStreamerTargeted = {type = "Tickbox", alwaysAccessible = true, title = "Target the streamer only.", tooltip = "", }
 
 	for i=1, 9 do
 		eHelicopterSandbox.menu["Numpad"..i] = nil
@@ -54,9 +56,9 @@ function applyTwitchIntegration()
 
 	if appliedTwitchIntegration == false then
 		eHelicopterSandbox.config.twitchIntegrationOnly = false
+		eHelicopterSandbox.config.twitchStreamerTargeted = true
 	end
 	appliedTwitchIntegration = true
 end
-
 
 Events.OnGameBoot.Add(applyTwitchIntegration)
