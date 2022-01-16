@@ -49,8 +49,6 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchSpaceEnd = {type = "Space", alwaysAccessible = true}
 	eHelicopterSandbox.config.twitchIntegrationOnly = eHelicopterSandbox.config.twitchIntegrationOnly or false
 	eHelicopterSandbox.config.twitchStreamerTargeted = eHelicopterSandbox.config.twitchStreamerTargeted or true
-
-	EasyConfig_Chucked.prepModForLoad(eHelicopterSandbox)
 end
 
 Events.OnGameBoot.Add(applyTwitchIntegration)
