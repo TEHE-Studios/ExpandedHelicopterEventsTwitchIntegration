@@ -2,7 +2,6 @@ Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.3.3-Easy
 
 require "ExpandedHelicopter02a_Presets"
 require "ExpandedHelicopter09_EasyConfigOptions"
-require "EasyConfigChucked1_Main"
 
 twitchIntegrationPresets = {"NONE"}
 function generateTwitchIntegrationPresets()
@@ -23,14 +22,14 @@ function EHETI_generateOptions()
 end
 
 
-appliedTwitchIntegration = false
 function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchSpace = nil
 	eHelicopterSandbox.menu.twitchIntegrationText = nil
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
 	eHelicopterSandbox.menu.twitchIntegrationOnly = nil
-	eHelicopterSandbox.menu.twitchSpaceEnd = nil
 	eHelicopterSandbox.menu.twitchStreamerTargeted = nil
+	eHelicopterSandbox.menu.twitchSpaceMid = nil
+	eHelicopterSandbox.menu.twitchSpaceEnd = nil
 
 	generateTwitchIntegrationPresets()
 
@@ -41,24 +40,17 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationOnly = {type = "Tickbox", alwaysAccessible = true, title = "Disable events outside of twitch integration.", tooltip = "", }
 	eHelicopterSandbox.menu.twitchStreamerTargeted = {type = "Tickbox", alwaysAccessible = true, title = "Target the streamer only.", tooltip = "", }
 
+	eHelicopterSandbox.menu.twitchSpaceMid = {type = "Space", alwaysAccessible = true}
 	for i=1, 9 do
 		eHelicopterSandbox.menu["Numpad"..i] = nil
-
-		local fetchedOptions = EHETI_generateOptions()
-		if #fetchedOptions > 0 then
-			eHelicopterSandbox.menu["Numpad"..i] = { type = "Combobox", title = "Numpad "..i, alwaysAccessible = true, options = fetchedOptions }
-			if appliedTwitchIntegration == false then
-				eHelicopterSandbox.config["Numpad"..i] = eHelicopterSandbox.config["Numpad"..i] or 1
-			end
-		end
+		eHelicopterSandbox.menu["Numpad"..i] = eHelicopterSandbox.menu["Numpad"..i] or {type = "Combobox", title = ("Numpad "..i), alwaysAccessible = true, options = EHETI_generateOptions() }
+		eHelicopterSandbox.config["Numpad"..i] = eHelicopterSandbox.config["Numpad"..i] or eHelicopterSandbox.config["Numpad"..i] or 1
 	end
 	eHelicopterSandbox.menu.twitchSpaceEnd = {type = "Space", alwaysAccessible = true}
+	eHelicopterSandbox.config.twitchIntegrationOnly = eHelicopterSandbox.config.twitchIntegrationOnly or false
+	eHelicopterSandbox.config.twitchStreamerTargeted = eHelicopterSandbox.config.twitchStreamerTargeted or true
 
-	if appliedTwitchIntegration == false then
-		eHelicopterSandbox.config.twitchIntegrationOnly = false
-		eHelicopterSandbox.config.twitchStreamerTargeted = true
-	end
-	appliedTwitchIntegration = true
+	EasyConfig_Chucked.prepModForLoad(eHelicopterSandbox)
 end
 
 Events.OnGameBoot.Add(applyTwitchIntegration)
