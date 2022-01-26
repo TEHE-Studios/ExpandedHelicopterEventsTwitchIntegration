@@ -38,12 +38,14 @@ function twitchIntegration_OnKeyPressed(key)
 			print("EHE-TI: launch: "..tostring(integration).." target:"..playerChar:getDisplayName())
 			heli:launch(playerChar, true)
 
-			local offsetX = ZombRand(500, 750)
+			local min, max = eheBounds.threshold/2, eheBounds.threshold-1
+			
+			local offsetX = ZombRand(min, max)
 			if ZombRand(101) <= 50 then
 				offsetX = 0-offsetX
 			end
 
-			local offsetY = ZombRand(500, 750)
+			local offsetY = ZombRand(min, max)
 			if ZombRand(101) <= 50 then
 				offsetY = 0-offsetY
 			end
