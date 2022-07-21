@@ -9,7 +9,7 @@ description=Afterwhich you can tie numpad presses to your chosen streaming progr
 description=
 description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
-description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Torch-portal[/b][/url][/h3]
+description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Touch-portal[/b][/url][/h3]
 description=Let us know if other programs allow for Twitch Event integration!
 description=
 description=
