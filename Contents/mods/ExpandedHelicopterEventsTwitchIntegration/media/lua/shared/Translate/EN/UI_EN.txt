@@ -1,0 +1,7 @@
+UI_EN = {
+    UI_Config_twitchIntegrationText = "Twitch Integration",
+    UI_Config_twitchIntegrationToolTip1 = "Stream deck or a similar program is required for seamless integration.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternatively, you can use the numpad keys manually.",
+    UI_Config_twitchIntegrationOnly = "Disable events outside of twitch integration.",
+    UI_Config_twitchStreamerTargeted = "Target co-op host only.",
+}
