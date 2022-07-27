@@ -36,7 +36,7 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchSpace = {type = "Space", alwaysAccessible = true}
 	eHelicopterSandbox.menu.twitchIntegrationText = {type = "Text", alwaysAccessible = true, text = "Twitch Integration", }
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = {type = "Text", alwaysAccessible = true, a=0.6,
-		text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.\n", }
+		text = "Stream deck or a similar program is required for seamless integration.\nAlternatively, you can use the numpad keys manually.", addAfter="\n"}
 	eHelicopterSandbox.menu.twitchIntegrationOnly = {type = "Tickbox", alwaysAccessible = true, title = "Disable events outside of twitch integration.", tooltip = "", }
 	eHelicopterSandbox.menu.twitchStreamerTargeted = {type = "Tickbox", alwaysAccessible = true, title = "Target the streamer only.", tooltip = "", }
 
