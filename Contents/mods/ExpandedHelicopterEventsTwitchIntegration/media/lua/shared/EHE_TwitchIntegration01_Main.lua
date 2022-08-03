@@ -28,6 +28,10 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationToolTip = nil
 	eHelicopterSandbox.menu.twitchIntegrationOnly = nil
 	eHelicopterSandbox.menu.twitchStreamerTargeted = nil
+	eHelicopterSandbox.menu.twitchHoursBeforeEventsAllowed = nil
+	eHelicopterSandbox.menu.twitchHoursBeforeEventsAllowedTooltip = nil
+	eHelicopterSandbox.menu.twitchHoursDelayBetweenEvents = nil
+	eHelicopterSandbox.menu.twitchHoursDelayBetweenEventsTooltip = nil
 	eHelicopterSandbox.menu.twitchSpaceMid = nil
 	eHelicopterSandbox.menu.twitchSpaceEnd = nil
 
@@ -40,6 +44,12 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchIntegrationOnly = {type = "Tickbox", alwaysAccessible = true, tooltip = "", }
 	eHelicopterSandbox.menu.twitchStreamerTargeted = {type = "Tickbox", alwaysAccessible = true, tooltip = "", }
 
+	eHelicopterSandbox.menu.twitchHoursBeforeEventsAllowed = {type = "Numberbox", alwaysAccessible = true, tooltip = "", }
+	eHelicopterSandbox.menu.twitchHoursBeforeEventsAllowedTooltip = {type = "Text", alwaysAccessible = true, tooltip = "", a=0.6,}
+
+	eHelicopterSandbox.menu.twitchHoursDelayBetweenEvents = {type = "Numberbox", alwaysAccessible = true, tooltip = "", }
+	eHelicopterSandbox.menu.twitchHoursDelayBetweenEventsTooltip = {type = "Text", alwaysAccessible = true, tooltip = "", a=0.6,}
+
 	eHelicopterSandbox.menu.twitchSpaceMid = {type = "Space", alwaysAccessible = true}
 	for i=1, 9 do
 		eHelicopterSandbox.menu["Numpad"..i] = nil
@@ -49,6 +59,8 @@ function applyTwitchIntegration()
 	eHelicopterSandbox.menu.twitchSpaceEnd = {type = "Space", alwaysAccessible = true}
 	eHelicopterSandbox.config.twitchIntegrationOnly = eHelicopterSandbox.config.twitchIntegrationOnly or false
 	eHelicopterSandbox.config.twitchStreamerTargeted = eHelicopterSandbox.config.twitchStreamerTargeted or true
+	eHelicopterSandbox.config.twitchHoursBeforeEventsAllowed = eHelicopterSandbox.config.twitchHoursBeforeEventsAllowed or 0
+	eHelicopterSandbox.config.twitchHoursDelayBetweenEvents = eHelicopterSandbox.config.twitchHoursDelayBetweenEvents or 0
 end
 
 Events.OnGameBoot.Add(applyTwitchIntegration)
