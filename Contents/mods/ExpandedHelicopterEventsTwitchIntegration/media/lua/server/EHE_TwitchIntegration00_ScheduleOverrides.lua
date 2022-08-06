@@ -145,9 +145,11 @@ local function onCommand(_module, _command, _dataA, _event)
 			for ID,dayHours in pairs(dayHoursSelection) do
 
 				if dayHours.h > 24 then
-					dayHours.h = dayHours.h-24
-					dayHours.d = dayHours.d+1
+					local dAdded = math.floor(dayHours.h/24)
+					dayHours.h = dayHours.h-(dAdded*24)
+					dayHours.d = dayHours.d+dAdded
 				end
+
 				if (dayHours.d > startDay) then
 					startDay = dayHours.d
 					startTime = dayHours.h
