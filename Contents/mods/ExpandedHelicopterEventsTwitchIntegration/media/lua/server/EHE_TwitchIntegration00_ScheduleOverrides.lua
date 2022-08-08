@@ -98,8 +98,9 @@ local function onCommand(_module, _command, _dataA, _event)
 		if _command == "sechduleEvent" then
 			
 			local appliedDayDelay, appliedHourDelay = 0, 0
+			local configDelayBetween = eHelicopterSandbox.config.twitchHoursDelayBetweenEvents or 0
 
-			local tHoursDelayBetweenEvents = math.max(0, eHelicopterSandbox.config.twitchHoursDelayBetweenEvents)
+			local tHoursDelayBetweenEvents = math.max(0, configDelayBetween)
 			if tHoursDelayBetweenEvents>0 then
 				local latestEventDay = 0
 				local latestEventHour = 0
@@ -125,7 +126,8 @@ local function onCommand(_module, _command, _dataA, _event)
 				appliedHourDelay = latestEventHour+HoursDelayBetweenEvents
 			end
 
-			local tHoursBeforeEventsAllowed = math.max(0, eHelicopterSandbox.config.twitchHoursBeforeEventsAllowed)
+			local configTimeBefore = eHelicopterSandbox.config.twitchHoursBeforeEventsAllowed or 0
+			local tHoursBeforeEventsAllowed = math.max(0, configTimeBefore)
 			local DaysBeforeAllowed = math.floor(tHoursBeforeEventsAllowed/24)
 			local HoursBeforeAllowed = math.floor(tHoursBeforeEventsAllowed-(DaysBeforeAllowed*24))
 
