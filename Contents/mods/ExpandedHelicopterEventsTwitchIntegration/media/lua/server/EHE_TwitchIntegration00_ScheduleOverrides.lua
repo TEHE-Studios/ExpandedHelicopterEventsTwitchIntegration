@@ -32,7 +32,7 @@ function eHeliEvent_engage(ID)
 	local foundTarget
 
 	if eHeliEvent.twitchTarget then
-
+		willFly = true
 		print(" ---- EHE-TI: twitchTarget:"..eHeliEvent.twitchTarget)
 
 		local players = getActualPlayers()
@@ -65,7 +65,7 @@ function eHeliEvent_engage(ID)
 		local heli = getFreeHelicopter(eHeliEvent.preset)
 		if heli then
 			eHeliEvent.triggered = true
-			heli:launch(foundTarget)
+			heli:launch(foundTarget, (not not eHeliEvent.twitchTarget) )
 
 			if eHeliEvent.twitchTarget then
 				twitch_MoveHeliCloser(heli, foundTarget)
