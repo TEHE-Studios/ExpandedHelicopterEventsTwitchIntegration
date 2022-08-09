@@ -132,9 +132,7 @@ local function onCommand(_module, _command, _dataA, _event)
 			local HoursBeforeAllowed = math.floor(tHoursBeforeEventsAllowed-(DaysBeforeAllowed*24))
 
 			local GT = getGameTime()
-			local nightsSurvived = GT:getNightsSurvived()
-			local globalModData = getExpandedHeliEventsModData()
-			local currentDay = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
+			local currentDay = GT:getNightsSurvived()
 			local currentHour = GT:getHour()
 
 			local startDay, startTime = 0, 0
