@@ -107,7 +107,7 @@ local function onCommand(_module, _command, _dataA, _event)
 
 				local globalModData = getExpandedHeliEventsModData()
 				for _,event in pairs(globalModData.EventsOnSchedule) do
-					if (not event.triggered) and (eHelicopter_PRESETS[event.preset]) and event.twitchTarget and event.twitchTarget==_event.twitchTarget then
+					if (eHelicopter_PRESETS[event.preset]) and event.twitchTarget and event.twitchTarget==_event.twitchTarget then
 						if (event.startDay > latestEventDay) then
 							latestEventDay = event.startDay
 							latestEventHour = event.startTime
