@@ -1,10 +1,8 @@
 require "ExpandedHelicopter00a_Util"
-require ""
 
 twitchKeys = {["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",
 			  ["KP_4"]="Numpad4",["KP_5"]="Numpad5",["KP_6"]="Numpad6",
 			  ["KP_7"]="Numpad7",["KP_8"]="Numpad8",["KP_9"]="Numpad9",}
-
 
 function twitchIntegration_OnKeyPressed(key)
 
