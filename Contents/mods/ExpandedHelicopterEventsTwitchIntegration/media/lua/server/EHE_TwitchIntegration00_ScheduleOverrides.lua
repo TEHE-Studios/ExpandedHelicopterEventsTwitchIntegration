@@ -95,7 +95,7 @@ end
 local function onCommand(_module, _command, _dataA, _event)
 	--serverside
 	if _module == "twitchIntegration" then
-		if _command == "sechduleEvent" then
+		if _command == "scheduleEvent" then
 			
 			local appliedDayDelay, appliedHourDelay = 0, 0
 			local configDelayBetween = eHelicopterSandbox.config.twitchHoursDelayBetweenEvents or 0

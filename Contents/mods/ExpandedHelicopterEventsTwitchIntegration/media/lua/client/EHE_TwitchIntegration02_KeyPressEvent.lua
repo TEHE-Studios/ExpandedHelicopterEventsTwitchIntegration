@@ -22,8 +22,9 @@ function twitchIntegration_OnKeyPressed(key)
 		if eHelicopterSandbox.config.twitchStreamerTargeted == true then
 			playerChar = getPlayer()
 		end
-		
+
 		if playerChar then
+
 			local numpadKey = eHelicopterSandbox.config[twitchKey]
 			local presetID = twitchIntegrationPresets[numpadKey]
 
@@ -37,7 +38,7 @@ function twitchIntegration_OnKeyPressed(key)
 
 			local pUsername = playerChar:getUsername()
 
-			sendClientCommand("twitchIntegration", "sechduleEvent", {presetID=presetID,twitchTarget=pUsername})
+			sendClientCommand("twitchIntegration", "scheduleEvent", {presetID=presetID,twitchTarget=pUsername})
 		end
 	end
 end
