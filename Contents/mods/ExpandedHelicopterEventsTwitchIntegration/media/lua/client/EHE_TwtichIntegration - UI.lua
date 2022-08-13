@@ -46,14 +46,9 @@ function schedulerButton:onMouseUp(x, y)
     --print("currentSchedulerIconIndex:"..currentSchedulerIconIndex)
 end
 
---ISUIElement
 function schedulerButton:initialise()
     ISButton.initialise(self)
     self:addToUIManager()
-    self:setVisible(true)
-end
-
-function schedulerButton:update()
     self:setVisible(true)
 end
 
@@ -69,15 +64,6 @@ function schedulerButton:render()
     end
 end
 
-
-function schedulerButton:prerender()
-    ISButton.prerender(self)
-end
-
-function schedulerButton:refresh()
-end
-
-
 function schedulerButton:new(x, y, width, height, player)
     local o = {}
     o = ISButton:new(x, y, width, height)
@@ -85,20 +71,14 @@ function schedulerButton:new(x, y, width, height, player)
     self.__index = self
     o.x = x
     o.y = y
+    o.displayBackground = false
     o.player = player
-    o.opacity = 255
-    o.opacityGain = 2
     o.width = width
     o.height = height
     o.visible = true
     o.title = ""
     o.tooltip = "TEST"--getText("")
-    o.mouseOver = false
-    o.tooltip = nil
     o.center = false
-    o.bConsumeMouseEvents = false
-    o.joypadFocused = false
-    o.textureIcon = getTexture(icon)
     o:initialise()
     return o
 end
