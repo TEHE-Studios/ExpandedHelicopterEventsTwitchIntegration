@@ -37,8 +37,7 @@ function twitchIntegration_OnKeyPressed(key)
 			end
 
 			local pUsername = playerChar:getUsername()
-
-			sendClientCommand("twitchIntegration", "scheduleEvent", {presetID=presetID,twitchTarget=pUsername})
+			sendClientCommand(playerChar, "twitchIntegration", "scheduleEvent", {presetID=presetID,twitchTarget=pUsername})
 		end
 	end
 end
