@@ -2,23 +2,18 @@
 require "ISUI/ISButton"
 
 local SCHEDULER_ICON = {
-    TWITCH = {
-        COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),
-        WHITE = getTexture("media/textures/scheduleButtons/t_w.png"),
-        BLACK = getTexture("media/textures/scheduleButtons/t_b.png"),
-    },
-    YOUTUBE = {
-        COLOR = getTexture("media/textures/scheduleButtons/yt_color.png"),
-        WHITE = getTexture("media/textures/scheduleButtons/yt_w.png"),
-        BLACK = getTexture("media/textures/scheduleButtons/yt_b.png"),
-    },
+    TWITCH =    { COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),
+                  WHITE = getTexture("media/textures/scheduleButtons/t_w.png"),
+                  BLACK = getTexture("media/textures/scheduleButtons/t_b.png"), },
+    YOUTUBE =   { COLOR = getTexture("media/textures/scheduleButtons/yt_color.png"),
+                  WHITE = getTexture("media/textures/scheduleButtons/yt_w.png"),
+                  BLACK = getTexture("media/textures/scheduleButtons/yt_b.png"), },
 }
-
 
 local SCHEDULER_ICONS = {}
 
-for _,family in pairs(SCHEDULER_ICON) do
-    for _,texture in pairs(family) do
+for famID,family in pairs(SCHEDULER_ICON) do
+    for colorID,texture in pairs(family) do
         table.insert(SCHEDULER_ICONS, texture)
     end
 end
@@ -62,16 +57,18 @@ function schedulerButton:render()
         self:setY(y)
         self:drawTexture(SCHEDULER_ICONS[currentSchedulerIconIndex], -6, -6, 1, 1, 1, 1)
 
-        if self.tooltipUI then self.tooltipUI:setVisible(false) end
-
+        --if self.tooltipUI then self.tooltipUI:setVisible(false) end
+        self.tooltip = " No events on schedule. "
         local C_EHE = CLIENT_ExpandedHelicopterEvents
         if C_EHE and C_EHE.EventsOnSchedule and #C_EHE.EventsOnSchedule>0 then
             local newTooltip = ""
             for k,e in pairs(C_EHE.EventsOnSchedule) do
-                newTooltip = newTooltip.." "..k..". "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
+                if not e.triggered then
+                    newTooltip = newTooltip.." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
+                end
             end
             self.tooltip = newTooltip.." "
-            if self.tooltipUI then self.tooltipUI:setVisible(true) end
+            --if self.tooltipUI then self.tooltipUI:setVisible(true) end
         end
 
         ISButton.render(self)
