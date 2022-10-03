@@ -3,7 +3,7 @@ require "EHE_TwitchIntegration00_ScheduleOverrides"
 local function onCommand(_module, _command, _player, _event)
     --serverside
     if _module == "twitchIntegration" then
-        
+        if getDebug() then print("Received command from " .. _player:getUsername() .." [".._module..".".._command.."]") end
         if _command == "scheduleEvent" then
 
             local appliedDayDelay, appliedHourDelay = 0, 0
@@ -71,6 +71,8 @@ local function onCommand(_module, _command, _player, _event)
 
             print(" ---- EHE-TI: Scheduled: "..tostring(_event.presetID).." d:"..startDay.."t: "..startTime.." target:".._event.twitchTarget)
             eHeliEvent_new(startDay, startTime, _event.presetID, _event.twitchTarget)
+
+            triggerEvent("EHE_ServerModDataReady")
         end
     end
 end
