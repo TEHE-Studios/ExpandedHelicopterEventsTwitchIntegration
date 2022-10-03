@@ -27,7 +27,7 @@ local schedulerButtonUI
 local function setUpSchedulerButton(player)
     ---@type schedulerButton|ISButton|ISPanel|ISUIElement
     schedulerButtonUI = schedulerButton:new(-50, -50, 20, 20, player)
-    print(" -- EHE-TI: button created")
+    --print(" -- EHE-TI: button created")
 end
 
 Events.OnCreatePlayer.Add(setUpSchedulerButton)
@@ -59,18 +59,21 @@ function schedulerButton:render()
 
         --if self.tooltipUI then self.tooltipUI:setVisible(false) end
         self.tooltip = " No events on schedule. "
-        local C_EHE = CLIENT_ExpandedHelicopterEvents
-        if C_EHE and C_EHE.EventsOnSchedule and #C_EHE.EventsOnSchedule>0 then
-            local newTooltip = ""
-            for k,e in pairs(C_EHE.EventsOnSchedule) do
-                if not e.triggered then
-                    newTooltip = newTooltip.." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
-                end
-            end
-            self.tooltip = newTooltip.." "
-            --if self.tooltipUI then self.tooltipUI:setVisible(true) end
-        end
+        if self:isMouseOver() then
+            local playerChar = getPlayer()
+            local pUsername = playerChar:getUsername()
 
+            local globalModData = getExpandedHeliEventsModData()
+            if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
+                local newTooltip
+                for k,e in pairs(globalModData.EventsOnSchedule) do
+                    if (not e.triggered) and e.twitchTarget and e.twitchTarget==pUsername then
+                        newTooltip = (newTooltip or "").." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
+                    end
+                end
+                if newTooltip then self.tooltip = newTooltip end
+            end
+        end
         ISButton.render(self)
     end
 end
