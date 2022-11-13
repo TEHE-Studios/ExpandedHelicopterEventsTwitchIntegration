@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.5-AUG-12"))
+Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.6-NOV-12"))
 
 require "ExpandedHelicopter02a_Presets"
 require "ExpandedHelicopter09_EasyConfigOptions"

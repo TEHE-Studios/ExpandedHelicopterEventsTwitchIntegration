@@ -69,8 +69,14 @@ local function onCommand(_module, _command, _player, _event)
                 end
             end
 
-            print(" ---- EHE-TI: Scheduled: "..tostring(_event.presetID).." d:"..startDay.."t: "..startTime.." target:".._event.twitchTarget)
-            eHeliEvent_new(startDay, startTime, _event.presetID, _event.twitchTarget)
+            --local numpadKey = eHelicopterSandbox.config[_event.twitchKey]
+            local presetID = twitchIntegrationPresets[_event.numpadKey]
+
+            if presetID=="RANDOM" then presetID = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)] end
+            print("-- scheduleEvent: _event.twitchKey:".._event.twitchKey.."  numpadKey:"..tostring(_event.numpadKey).."  presetID:"..tostring(presetID))
+            if not presetID or presetID=="NONE" then return end
+            print(" ---- EHE-TI: Scheduled: "..tostring(presetID).." d:"..startDay.." t: "..startTime.." target:".._event.twitchTarget)
+            eHeliEvent_new(startDay, startTime, presetID, _event.twitchTarget)
 
             triggerEvent("EHE_ServerModDataReady")
         end

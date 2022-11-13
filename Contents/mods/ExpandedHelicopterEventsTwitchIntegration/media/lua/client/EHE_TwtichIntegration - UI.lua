@@ -67,7 +67,7 @@ function schedulerButton:render()
             if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
                 local newTooltip
                 for k,e in pairs(globalModData.EventsOnSchedule) do
-                    if (not e.triggered) and e.twitchTarget and e.twitchTarget==pUsername then
+                    if (not e.triggered) and e.preset and e.twitchTarget and e.twitchTarget==pUsername and e.startDay and e.startTime then
                         newTooltip = (newTooltip or "").." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
                     end
                 end
