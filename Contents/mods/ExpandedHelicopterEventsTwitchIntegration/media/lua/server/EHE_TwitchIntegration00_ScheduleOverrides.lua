@@ -72,6 +72,8 @@ function eHeliEvent_engage(ID)
 			end
 		end
 	end
+
+	triggerEvent("EHE_ServerModDataReady", false)
 end
 
 
@@ -85,8 +87,5 @@ function eHeliEvent_new(startDay, startTime, preset, twitchTarget)
 
 	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
-
-	if twitchTarget then
-		eHeliEvent_Loop()
-	end
+	triggerEvent("EHE_ServerModDataReady", false)
 end
