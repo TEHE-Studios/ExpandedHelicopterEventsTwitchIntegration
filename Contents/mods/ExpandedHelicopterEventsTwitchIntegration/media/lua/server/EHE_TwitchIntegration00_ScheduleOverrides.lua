@@ -33,7 +33,7 @@ function eHeliEvent_engage(ID)
 
 	if eHeliEvent.twitchTarget then
 		willFly = true
-		print(" ---- EHE-TI: twitchTarget:"..eHeliEvent.twitchTarget)
+		print(" --- EHE-TI: twitchTarget:"..eHeliEvent.twitchTarget)
 
 		local players = getActualPlayers()
 		for _,player in pairs(players) do
@@ -42,14 +42,14 @@ function eHeliEvent_engage(ID)
 			end
 		end
 		if not foundTarget then
-			print(" ----- EHE-TI: Cannot find "..eHeliEvent.twitchTarget..".")
+			print(" ---- EHE-TI: Cannot find "..eHeliEvent.twitchTarget..".")
 			eHeliEvent.triggered = true
 			willFly = false
 		end
 	else
 		if eHelicopterSandbox.config.twitchIntegrationOnly == true then
 			eHeliEvent.triggered = true
-			print(" ----- EHE-TI: "..eHeliEvent.preset.." event bypassed.")
+			print(" ---- EHE-TI: "..eHeliEvent.preset.." event bypassed.")
 			return
 		end
 
