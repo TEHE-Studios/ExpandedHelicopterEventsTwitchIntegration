@@ -1,5 +1,6 @@
 --require "ISUI/ISUIElement"
 require "ISUI/ISButton"
+require "ExpandedHelicopter12c_EHEGlobalModDataCLIENT"
 
 local SCHEDULER_ICON = {
     TWITCH =    { COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),
@@ -27,19 +28,15 @@ local schedulerButtonUI
 local function setUpSchedulerButton(player)
     ---@type schedulerButton|ISButton|ISPanel|ISUIElement
     schedulerButtonUI = schedulerButton:new(-50, -50, 20, 20, player)
-    --print(" -- EHE-TI: button created")
 end
-
 Events.OnCreatePlayer.Add(setUpSchedulerButton)
 
 
 function schedulerButton:onMouseUp(x, y)
     currentSchedulerIconIndex = currentSchedulerIconIndex+1
-    if currentSchedulerIconIndex > #SCHEDULER_ICONS then
-        currentSchedulerIconIndex = 1
-    end
-    --print("currentSchedulerIconIndex:"..currentSchedulerIconIndex)
+    if currentSchedulerIconIndex > #SCHEDULER_ICONS then currentSchedulerIconIndex = 1 end
 end
+
 
 function schedulerButton:initialise()
     ISButton.initialise(self)
@@ -47,6 +44,7 @@ function schedulerButton:initialise()
     self:setVisible(true)
     --schedulerEvents = {}
 end
+
 
 function schedulerButton:render()
     if self.visible then
@@ -56,19 +54,26 @@ function schedulerButton:render()
         self:setX(x)
         self:setY(y)
         self:drawTexture(SCHEDULER_ICONS[currentSchedulerIconIndex], -6, -6, 1, 1, 1, 1)
-
-        --if self.tooltipUI then self.tooltipUI:setVisible(false) end
         self.tooltip = " No events on schedule. "
         if self:isMouseOver() then
             local playerChar = getPlayer()
             local pUsername = playerChar:getUsername()
 
-            local globalModData = getExpandedHeliEventsModData()
+            local globalModData = getExpandedHeliEventsModData_Client()
             if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
                 local newTooltip
+
+                if getDebug() then
+                    local GT = getGameTime()
+                    local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
+                    newTooltip = "currentDay: "..currentDay.." currentHour:"..currentHour.."\n"
+                end
+
                 for k,e in pairs(globalModData.EventsOnSchedule) do
-                    if (not e.triggered) and e.preset and e.twitchTarget and e.twitchTarget==pUsername and e.startDay and e.startTime then
-                        newTooltip = (newTooltip or "").." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime.."\n"
+                    if (not e.triggered) and ((e.preset and e.twitchTarget and e.twitchTarget==pUsername and e.startDay and e.startTime) or getDebug()) then
+                        newTooltip = (newTooltip or "").." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime
+                        if getDebug() then newTooltip = newTooltip.." t:"..tostring(e.triggered)..(e.twitchTarget and " @"..tostring(e.twitchTarget) or "") end
+                        newTooltip = newTooltip.."\n"
                     end
                 end
                 if newTooltip then self.tooltip = newTooltip end
@@ -77,6 +82,7 @@ function schedulerButton:render()
         ISButton.render(self)
     end
 end
+
 
 function schedulerButton:new(x, y, width, height, player)
     local o = {}
@@ -91,7 +97,7 @@ function schedulerButton:new(x, y, width, height, player)
     o.height = height
     o.visible = true
     o.title = ""
-    o.tooltip = " "--getText("")
+    o.tooltip = " "
     o.center = false
     o:initialise()
     return o

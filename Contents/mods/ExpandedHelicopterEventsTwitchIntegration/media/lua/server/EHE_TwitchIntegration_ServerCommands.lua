@@ -1,7 +1,7 @@
 require "EHE_TwitchIntegration00_ScheduleOverrides"
 
 local function onCommand(_module, _command, _player, _event)
-    --serverside
+
     if _module == "twitchIntegration" then
         if getDebug() then print("Received command from " .. _player:getUsername() .." [".._module..".".._command.."]") end
         if _command == "scheduleEvent" then
@@ -69,13 +69,11 @@ local function onCommand(_module, _command, _player, _event)
                 end
             end
 
-            --local numpadKey = eHelicopterSandbox.config[_event.twitchKey]
-            local presetID = twitchIntegrationPresets[_event.numpadKey]
+            local presetID = twitchIntegrationPresets[_event.presetConfigNum]
 
             if presetID=="RANDOM" then presetID = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)] end
-            print("-- scheduleEvent: _event.twitchKey:".._event.twitchKey.."  numpadKey:"..tostring(_event.numpadKey).."  presetID:"..tostring(presetID))
+            print("-- scheduleEvent: _event.twitchKey:".._event.twitchKey.."  presetConfig:"..tostring(_event.presetConfigNum).."  presetID:"..tostring(presetID).. " cD:"..currentDay.." cH:"..currentHour)
             if not presetID or presetID=="NONE" then return end
-            print(" ---- EHE-TI: Scheduled: "..tostring(presetID).." d:"..startDay.." t: "..startTime.." target:".._event.twitchTarget)
             eHeliEvent_new(startDay, startTime, presetID, _event.twitchTarget)
         end
     end
