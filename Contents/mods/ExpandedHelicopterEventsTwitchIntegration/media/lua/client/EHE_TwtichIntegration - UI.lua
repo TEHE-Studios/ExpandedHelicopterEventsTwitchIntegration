@@ -71,7 +71,7 @@ function schedulerButton:render()
 
                 for k,e in pairs(globalModData.EventsOnSchedule) do
                     if (not e.triggered) and ((e.preset and e.twitchTarget and e.twitchTarget==pUsername and e.startDay and e.startTime) or getDebug()) then
-                        newTooltip = (newTooltip or "").." - "..e.preset.."  Day:"..e.startDay.." Time:"..e.startTime
+                        newTooltip = (newTooltip or "").." - "..(e.preset).."  Day:"..e.startDay.." Time:"..e.startTime
                         if getDebug() then newTooltip = newTooltip.." t:"..tostring(e.triggered)..(e.twitchTarget and " @"..tostring(e.twitchTarget) or "") end
                         newTooltip = newTooltip.."\n"
                     end
