@@ -5,7 +5,7 @@ description=[h2]THIS MOD REQUIRES [url=https://steamcommunity.com/sharedfiles/fi
 description=
 description=The mod is intended for streamers who would like their viewers to spawn events.
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
-description=Afterwhich you can tie numpad presses to your chosen streaming program.
+description=After which you can tie numpad presses to your chosen streaming program.
 description=
 description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
