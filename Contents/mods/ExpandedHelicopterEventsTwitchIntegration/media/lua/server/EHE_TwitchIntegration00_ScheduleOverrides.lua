@@ -1,5 +1,4 @@
 require "ExpandedHelicopter06_EventScheduler"
-require "ExpandedHelicopter00e_EHEGlobalModData"
 
 local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
 function eHeliEvent_ScheduleNew(startDay, startTime, preset)
@@ -67,10 +66,7 @@ function eHeliEvent_engage(ID)
 		if heli then
 			eHeliEvent.triggered = true
 			heli:launch(foundTarget, (not not eHeliEvent.twitchTarget) )
-
-			if eHeliEvent.twitchTarget then
-				twitch_MoveHeliCloser(heli, foundTarget)
-			end
+			if eHeliEvent.twitchTarget then twitch_MoveHeliCloser(heli, foundTarget) end
 		end
 	end
 
@@ -79,14 +75,14 @@ end
 
 
 function eHeliEvent_new(startDay, startTime, preset, twitchTarget)
-	if (not startDay) or (not startTime) then
-		return
-	end
+	if (not startDay) or (not startTime) then return end
+
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
 
-	if twitchTarget then newEvent["twitchTarget"] = twitchTarget end
-
-	print(" ---- EHE-TI: Scheduled: "..tostring(preset).." d:"..tostring(startDay).." t: "..tostring(startTime).." tT:"..tostring(twitchTarget))
+	if twitchTarget then
+		newEvent["twitchTarget"] = twitchTarget
+		print(" ---- EHE-TI: Scheduled: "..tostring(preset).." d:"..tostring(startDay).." t: "..tostring(startTime).." tT:"..tostring(twitchTarget))
+	end
 
 	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
