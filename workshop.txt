@@ -7,7 +7,6 @@ description=The mod is intended for streamers who would like their viewers to sp
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
 description=After which you can tie numpad presses to your chosen streaming program.
 description=
-description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
 description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Touch-portal[/b][/url][/h3]
 description=Let us know if other programs allow for Twitch Event integration!
