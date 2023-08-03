@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: ver:0.6 FEB_04_23"))
+Events.OnGameBoot.Add(print("Twitch-Integrated Helicopter Events: AUG_03_23"))
